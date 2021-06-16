@@ -55,9 +55,9 @@ select查询的序列号，如果行是UNION的结果集，则这个值是NULL�
 
 输出行所引用表的名称，可以是一下的值：
 
-- <union*`M`*,*`N`*>：使用了UNION的结果集。
-- <derived*`N`*>：使用了衍生表的结果集。
-- <subquery*`N`*>：使用了materialized subquery的结果集。
+- <union`M`,`N`>：使用了UNION的结果集。
+- <derived`N`>：使用了衍生表的结果集。
+- <subquery`N`>：使用了materialized subquery的结果集。
 
 ## 4、partitions
 
