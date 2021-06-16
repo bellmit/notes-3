@@ -217,7 +217,7 @@ explain select * from (select * from employees) as t where t.emp_no = 10002
 
 ## 9、MATERRIALIZED
 
-中文：物化，使用子查询时，只对子查询查询一次，然后保存为一个临时表，后续对子查询结果集的访问直接访问临时表即可，与之相对的执行方式就是外表中的每一行数据都执行一次子查询，该查询类型就是 `DEPENDENT SUBQUERY`。
+中文：物化，使用子查询时，只对子查询查询一次，然后保存为一个临时表，后续对子查询结果集的访问直接访问临时表即可，与之相对的执行方式就是外表中的每一行数据都执行一次子查询，该查询类型就是 `DEPENDENT SUBQUERY`。
 
 ## 10、UNCACHABLE SUBQUERY
 
