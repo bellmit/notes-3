@@ -11,9 +11,9 @@ MVCC 就是为了实现读-写冲突不加锁，这个读就是快照读，非�
 
 MVCC 的核心主要是：
 
-1. 每行数据会有三个隐藏字段：DB_TRX_ID、DB_ROLL_PTR 和 DB_ROW_ID
-2. Undo log
-3. 视图（read view）
+1. 每行数据会有三个隐藏字段：DB_TRX_ID、DB_ROLL_PTR 和 DB_ROW_ID。
+2. Undo log。
+3. 视图（read view）。
 
 通过这三个功能来实现一致性读（可重复读）。
 
