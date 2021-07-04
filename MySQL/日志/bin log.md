@@ -58,7 +58,7 @@ binlog-format=STATEMENT
 
 `mysqlbinlog -v /usr/local/var/mysql/bin_log.000018`
 
-# 5、binlog 和 redo log 的两段提交
+# 五、binlog 和 redo log 的两段提交
 
 因为 binlog 是 Server 层的，redo log 是 InnoDB 层的，事务提交后写入数据时，先写 redo log，然后写 binlog，最后执行 redo log 的 commit 操作，要保证 redo log 和 binlog 的数据一致性。
 
