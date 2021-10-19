@@ -23,21 +23,18 @@ gc-log.log.2
 
 下面是官方的回复：[https://bugs.java.com/bugdatabase/view_bug.do?bug_id=6941923](https://bugs.java.com/bugdatabase/view_bug.do?bug_id=6941923)
 
-> introduced three flags: 
+> introduced three flags:
 >
-> 1) -XX:+UseGCLogRotation                       must be used with -Xloggc:<filename> 
+> 1) -XX:+UseGCLogRotation                       must be used with -Xloggc:<filename>
 >
-> 2) -XX:NumberOfGClogFiles=<number of files>    must be >=1, default is one 
+> 2) -XX:NumberOfGClogFiles=<number of files>    must be >=1, default is one
 >
-> 3) -XX:GCLogFileSize=<number>M (or K)          default will be set to 512K 
+> 3) -XX:GCLogFileSize=<number>M (or K)          default will be set to 512K
 >
-> if UseGCLogRotation set and -Xloggc gives file name, do Log rotation, depends on other flag settings. 
+> if UseGCLogRotation set and -Xloggc gives file name, do Log rotation, depends on other flag settings.
 >
-> if NumberOfGClogFiles = 1, using same file, rotate log when reaches file capicity (set by GCLogFileSize) in <filename>.0 
+> if NumberOfGClogFiles = 1, using same file, rotate log when reaches file capicity (set by GCLogFileSize) in <filename>.0
 >
-> if NumberOfGClogFiles > 1, rotate between files <filename>.0, <filename>.1, ..., <filename>.n-1  
+> if NumberOfGClogFiles > 1, rotate between files <filename>.0, <filename>.1, ..., <filename>.n-1
 >
 > GC output through outputStream, we have multiple threads, vmThread, CMS threads, GC worker threads. Check if need rotation at every safepoint. When stop world (at safepoint), changing file handle is safe, else need grab lock to do the change. i.e. tty_lock.
-
-
-

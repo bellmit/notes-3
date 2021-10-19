@@ -121,12 +121,3 @@ select t1.b,t2.* from t2 straight_join t1 on (t1.b=t2.b) where t2.id<=100;
 
 1. 执行计划中如果出现了 Block Nested-Loop Join，即 Extra 字段里面有没有出现“Block Nested Loop”字样，就可以使用 join。
 2. 如果你的 join 语句很慢，就把 join_buffer_size 改大。
-
-
-
-
-
-
-
-
-

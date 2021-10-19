@@ -61,28 +61,28 @@ public class Test {
 ## 1、原始类型Object
 
 ```java
-public class Pair<T> {  
-    private T value;  
-    public T getValue() {  
-        return value;  
-    }  
-    public void setValue(T  value) {  
-        this.value = value;  
-    }  
-}  
+public class Pair<T> {
+    private T value;
+    public T getValue() {
+        return value;
+    }
+    public void setValue(T  value) {
+        this.value = value;
+    }
+}
 ```
 
 Pair<T>的原始类型为:
 
 ```java
-public class Pair {  
-    private Object value;  
-    public Object getValue() {  
-        return value;  
-    }  
-    public void setValue(Object  value) {  
-        this.value = value;  
-    }  
+public class Pair {
+    private Object value;
+    public Object getValue() {
+        return value;
+    }
+    public void setValue(Object  value) {
+        this.value = value;
+    }
 }
 ```
 
@@ -108,24 +108,24 @@ public class Pair<T extends Comparable> {}
 - 在指定泛型的情况下，该方法的几种类型必须是该泛型的实例的类型或者其子类。
 
 ```java
-public class Test {  
-    public static void main(String[] args) {  
+public class Test {
+    public static void main(String[] args) {
 
-        /**不指定泛型的时候*/  
-        int i = Test.add(1, 2); //这两个参数都是Integer，所以T为Integer类型  
-        Number f = Test.add(1, 1.2); //这两个参数一个是Integer，以风格是Float，所以取同一父类的最小级，为Number  
-        Object o = Test.add(1, "asd"); //这两个参数一个是Integer，以风格是Float，所以取同一父类的最小级，为Object  
+        /**不指定泛型的时候*/
+        int i = Test.add(1, 2); //这两个参数都是Integer，所以T为Integer类型
+        Number f = Test.add(1, 1.2); //这两个参数一个是Integer，以风格是Float，所以取同一父类的最小级，为Number
+        Object o = Test.add(1, "asd"); //这两个参数一个是Integer，以风格是Float，所以取同一父类的最小级，为Object
 
-        /**指定泛型的时候*/  
-        int a = Test.<Integer>add(1, 2); //指定了Integer，所以只能为Integer类型或者其子类  
-        int b = Test.<Integer>add(1, 2.2); //编译错误，指定了Integer，不能为Float  
-        Number c = Test.<Number>add(1, 2.2); //指定为Number，所以可以为Integer和Float  
-    }  
+        /**指定泛型的时候*/
+        int a = Test.<Integer>add(1, 2); //指定了Integer，所以只能为Integer类型或者其子类
+        int b = Test.<Integer>add(1, 2.2); //编译错误，指定了Integer，不能为Float
+        Number c = Test.<Number>add(1, 2.2); //指定为Number，所以可以为Integer和Float
+    }
 
-    //这是一个简单的泛型方法  
-    public static <T> T add(T x,T y){  
-        return y;  
-    }  
+    //这是一个简单的泛型方法
+    public static <T> T add(T x,T y){
+        return y;
+    }
 }
 ```
 
@@ -134,12 +134,12 @@ public class Test {
 ## 2、Object泛型
 
 ```java
-public static void main(String[] args) {  
-    ArrayList list = new ArrayList();  
-    list.add(1);  
-    list.add("121");  
-    list.add(new Date());  
-}  
+public static void main(String[] args) {
+    ArrayList list = new ArrayList();
+    list.add(1);
+    list.add("121");
+    list.add(new Date());
+}
 ```
 
 # 三、类型擦除引起的问题及解决方法
@@ -155,11 +155,11 @@ public static void main(String[] args) {
 例如：
 
 ```java
-public static  void main(String[] args) {  
+public static  void main(String[] args) {
 
-    ArrayList<String> list = new ArrayList<String>();  
-    list.add("123");  
-    list.add(123);//编译错误  
+    ArrayList<String> list = new ArrayList<String>();
+    list.add("123");
+    list.add(123);//编译错误
 }
 ```
 
@@ -170,7 +170,7 @@ public static  void main(String[] args) {
 以 ArrayList举例子，以前的写法:
 
 ```java
-ArrayList list = new ArrayList();  
+ArrayList list = new ArrayList();
 ```
 
 现在的写法:
@@ -195,27 +195,27 @@ ArrayList list2 = new ArrayList<String>(); //第二种 情况
 举例子：
 
 ```java
-public class Test {  
+public class Test {
 
-    public static void main(String[] args) {  
+    public static void main(String[] args) {
 
-        ArrayList<String> list1 = new ArrayList();  
-        list1.add("1"); //编译通过  
-        list1.add(1); //编译错误  
-        String str1 = list1.get(0); //返回类型就是String  
+        ArrayList<String> list1 = new ArrayList();
+        list1.add("1"); //编译通过
+        list1.add(1); //编译错误
+        String str1 = list1.get(0); //返回类型就是String
 
-        ArrayList list2 = new ArrayList<String>();  
-        list2.add("1"); //编译通过  
-        list2.add(1); //编译通过  
-        Object object = list2.get(0); //返回类型就是Object  
+        ArrayList list2 = new ArrayList<String>();
+        list2.add("1"); //编译通过
+        list2.add(1); //编译通过
+        Object object = list2.get(0); //返回类型就是Object
 
-        new ArrayList<String>().add("11"); //编译通过  
-        new ArrayList<String>().add(22); //编译错误  
+        new ArrayList<String>().add("11"); //编译通过
+        new ArrayList<String>().add(22); //编译错误
 
-        String str2 = new ArrayList<String>().get(0); //返回类型就是String  
-    }  
+        String str2 = new ArrayList<String>().get(0); //返回类型就是String
+    }
 
-}  
+}
 ```
 
 通过上面的例子，我们可以明白，**类型检查就是针对引用的**，谁是一个引用，用这个引用调用泛型方法，就会对这个引用调用的方法进行类型检测，而无关它真正引用的对象。
@@ -225,16 +225,16 @@ public class Test {
 在Java中，像下面形式的引用传递是不允许的:
 
 ```java
-ArrayList<String> list1 = new ArrayList<Object>(); //编译错误  
+ArrayList<String> list1 = new ArrayList<Object>(); //编译错误
 ArrayList<Object> list2 = new ArrayList<String>(); //编译错误
 ```
 
 我们先看第一种情况，将第一种情况拓展成下面的形式：
 
 ```java
-ArrayList<Object> list1 = new ArrayList<Object>();  
-list1.add(new Object());  
-list1.add(new Object());  
+ArrayList<Object> list1 = new ArrayList<Object>();
+list1.add(new Object());
+list1.add(new Object());
 ArrayList<String> list2 = list1; //编译错误
 ````
 
@@ -243,8 +243,8 @@ ArrayList<String> list2 = list1; //编译错误
 再看第二种情况，将第二种情况拓展成下面的形式：
 
 ```java
-ArrayList<String> list1 = new ArrayList<String>();  
-list1.add(new String());  
+ArrayList<String> list1 = new ArrayList<String>();
+list1.add(new String());
 list1.add(new String());
 
 ArrayList<Object> list2 = list1; //编译错误
@@ -263,11 +263,11 @@ ArrayList<Object> list2 = list1; //编译错误
 看下`ArrayList.get()`方法：
 
 ```java
-public E get(int index) {  
+public E get(int index) {
 
-    RangeCheck(index);  
+    RangeCheck(index);
 
-    return (E) elementData[index];  
+    return (E) elementData[index];
 
 }
 ```
@@ -285,46 +285,46 @@ Date date = pair.value;
 现在有这样一个泛型类：
 
 ```java
-class Pair<T> {  
+class Pair<T> {
 
-    private T value;  
+    private T value;
 
-    public T getValue() {  
-        return value;  
-    }  
+    public T getValue() {
+        return value;
+    }
 
-    public void setValue(T value) {  
-        this.value = value;  
-    }  
+    public void setValue(T value) {
+        this.value = value;
+    }
 }
 ```
 
 然后我们想要一个子类继承它。
 
 ```java
-class DateInter extends Pair<Date> {  
+class DateInter extends Pair<Date> {
 
     @Override
-    public void setValue(Date value) {  
-        super.setValue(value);  
-    }  
+    public void setValue(Date value) {
+        super.setValue(value);
+    }
 
     @Override
-    public Date getValue() {  
-        return super.getValue();  
-    }  
+    public Date getValue() {
+        return super.getValue();
+    }
 }
 ```
 
 在这个子类中，我们设定父类的泛型类型为`Pair<Date>`，在子类中，我们覆盖了父类的两个方法，我们的原意是这样的：将父类的泛型类型限定为`Date`，那么父类里面的两个方法的参数都为`Date`类型。
 
 ```java
-public Date getValue() {  
-    return value;  
-}  
+public Date getValue() {
+    return value;
+}
 
-public void setValue(Date value) {  
-    this.value = value;  
+public void setValue(Date value) {
+    this.value = value;
 }
 ```
 
@@ -333,29 +333,29 @@ public void setValue(Date value) {
 分析：实际上，类型擦除后，父类的的泛型类型全部变为了原始类型`Object`，所以父类编译之后会变成下面的样子：
 
 ```java
-class Pair {  
-    private Object value;  
+class Pair {
+    private Object value;
 
-    public Object getValue() {  
-        return value;  
-    }  
+    public Object getValue() {
+        return value;
+    }
 
-    public void setValue(Object  value) {  
-        this.value = value;  
-    }  
-}  
+    public void setValue(Object  value) {
+        this.value = value;
+    }
+}
 ```
 
 再看子类的两个重写的方法的类型：
 
 ```java
-@Override  
-public void setValue(Date value) {  
-    super.setValue(value);  
-}  
-@Override  
-public Date getValue() {  
-    return super.getValue();  
+@Override
+public void setValue(Date value) {
+    super.setValue(value);
+}
+@Override
+public Date getValue() {
+    return super.getValue();
 }
 ```
 
@@ -364,10 +364,10 @@ public Date getValue() {
 我们在一个main方法测试一下：
 
 ```java
-public static void main(String[] args) throws ClassNotFoundException {  
-        DateInter dateInter = new DateInter();  
-        dateInter.setValue(new Date());                  
-        dateInter.setValue(new Object()); //编译错误  
+public static void main(String[] args) throws ClassNotFoundException {
+        DateInter dateInter = new DateInter();
+        dateInter.setValue(new Date());
+        dateInter.setValue(new Object()); //编译错误
 }
 ```
 
@@ -378,14 +378,14 @@ public static void main(String[] args) throws ClassNotFoundException {
 原因是这样的，我们传入父类的泛型类型是`Date，Pair<Date>`，我们的本意是将泛型类变为如下：
 
 ```java
-class Pair {  
-    private Date value;  
-    public Date getValue() {  
-        return value;  
-    }  
-    public void setValue(Date value) {  
-        this.value = value;  
-    }  
+class Pair {
+    private Date value;
+    public Date getValue() {
+        return value;
+    }
+    public void setValue(Date value) {
+        this.value = value;
+    }
 }
 ```
 
@@ -398,40 +398,40 @@ class Pair {
 首先，我们用`javap -c className`的方式反编译下`DateInter`子类的字节码，结果如下：
 
 ```class
-class com.tao.test.DateInter extends com.tao.test.Pair<java.util.Date> {  
-  com.tao.test.DateInter();  
-    Code:  
-       0: aload_0  
-       1: invokespecial #8                  // Method com/tao/test/Pair."<init>":()V  
-       4: return  
+class com.tao.test.DateInter extends com.tao.test.Pair<java.util.Date> {
+  com.tao.test.DateInter();
+    Code:
+       0: aload_0
+       1: invokespecial #8                  // Method com/tao/test/Pair."<init>":()V
+       4: return
 
-  public void setValue(java.util.Date);  //我们重写的setValue方法  
-    Code:  
-       0: aload_0  
-       1: aload_1  
-       2: invokespecial #16                 // Method com/tao/test/Pair.setValue:(Ljava/lang/Object;)V  
-       5: return  
+  public void setValue(java.util.Date);  //我们重写的setValue方法
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #16                 // Method com/tao/test/Pair.setValue:(Ljava/lang/Object;)V
+       5: return
 
-  public java.util.Date getValue();    //我们重写的getValue方法  
-    Code:  
-       0: aload_0  
-       1: invokespecial #23                 // Method com/tao/test/Pair.getValue:()Ljava/lang/Object;  
-       4: checkcast     #26                 // class java/util/Date  
-       7: areturn  
+  public java.util.Date getValue();    //我们重写的getValue方法
+    Code:
+       0: aload_0
+       1: invokespecial #23                 // Method com/tao/test/Pair.getValue:()Ljava/lang/Object;
+       4: checkcast     #26                 // class java/util/Date
+       7: areturn
 
-  public java.lang.Object getValue();     //编译时由编译器生成的桥方法  
-    Code:  
-       0: aload_0  
-       1: invokevirtual #28                 // Method getValue:()Ljava/util/Date 去调用我们重写的getValue方法;  
-       4: areturn  
+  public java.lang.Object getValue();     //编译时由编译器生成的桥方法
+    Code:
+       0: aload_0
+       1: invokevirtual #28                 // Method getValue:()Ljava/util/Date 去调用我们重写的getValue方法;
+       4: areturn
 
-  public void setValue(java.lang.Object);   //编译时由编译器生成的桥方法  
-    Code:  
-       0: aload_0  
-       1: aload_1  
-       2: checkcast     #26                 // class java/util/Date  
-       5: invokevirtual #30                 // Method setValue:(Ljava/util/Date; 去调用我们重写的setValue方法)V  
-       8: return  
+  public void setValue(java.lang.Object);   //编译时由编译器生成的桥方法
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #26                 // class java/util/Date
+       5: invokevirtual #30                 // Method setValue:(Ljava/util/Date; 去调用我们重写的setValue方法)V
+       8: return
 }
 ```
 
@@ -448,16 +448,16 @@ class com.tao.test.DateInter extends com.tao.test.Pair<java.util.Date> {
 那么父类的`getValue`方法如下：
 
 ```java
-public Object getValue() {  
-    return value;  
+public Object getValue() {
+    return value;
 }
 ```
 
 而子类重写的方法是：
 
 ```java
-public Date getValue() {  
-    return super.getValue();  
+public Date getValue() {
+    return super.getValue();
 }
 ```
 
@@ -492,11 +492,11 @@ if( arrayList instanceof ArrayList<String>)
 举例说明：
 
 ```java
-public class Test2<T> {    
-    public static T one;   //编译错误    
-    public static  T show(T one){ //编译错误    
-        return null;    
-    }    
+public class Test2<T> {
+    public static T one;   //编译错误
+    public static  T show(T one){ //编译错误
+        return null;
+    }
 }
 ```
 
@@ -505,11 +505,11 @@ public class Test2<T> {
 但是要注意区分下面的一种情况：
 
 ```java
-public class Test2<T> {    
+public class Test2<T> {
 
-    public static <T >T show(T one){ //这是正确的    
-        return null;    
-    }    
+    public static <T >T show(T one){ //这是正确的
+        return null;
+    }
 }
 ```
 

@@ -111,6 +111,3 @@ write pos 和 checkpoint 之间的是“粉板”上还空着的部分，可以�
 ## 5、**<u>innodb_log_group_home_dir</u>**
 
 设置 redo log file 的目录。默认在 datadir 目录下。
-
-
-

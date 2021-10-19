@@ -241,7 +241,7 @@ SELECT * FROM tbl_name WHERE primary_key_part1=1 AND primary_key_part2=2;
 
 ## 3、eq_ref
 
-唯一性索引或主键查找，对于每个索引键，表中只有一条记录与之匹配，常见于主键或唯一索引扫描。 
+唯一性索引或主键查找，对于每个索引键，表中只有一条记录与之匹配，常见于主键或唯一索引扫描。
 
 ```sql
 SELECT * FROM ref_table,other_table WHERE ref_table.key_column=other_table.column;
@@ -348,4 +348,3 @@ Tables are read using the Multi-Range Read optimization strategy.
 ## 10、Distinct
 
 优化distinct操作，在找到第一个匹配的元祖后即停止找同样值得动作。
-

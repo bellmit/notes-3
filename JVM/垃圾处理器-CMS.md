@@ -85,17 +85,17 @@ G1：写屏障 + 原始快照（Snapshot At The Beginning，STAB）
 给某个对象的成员变量赋值时，其底层代码大概长这样：
 
 ```c
-void oop_field_store(oop* field, oop new_value) { 
+void oop_field_store(oop* field, oop new_value) {
     *field = new_value; // 赋值操作
-} 
+}
 ```
 
 所谓的写屏障，其实就是指在赋值操作前后，加入一些处理（可以参考AOP的概念）：
 
 ```c
-void oop_field_store(oop* field, oop new_value) {  
+void oop_field_store(oop* field, oop new_value) {
     pre_write_barrier(field); // 写屏障-写前操作
-    *field = new_value; 
+    *field = new_value;
     post_write_barrier(field, new_value);  // 写屏障-写后操作
 }
 ```
@@ -103,7 +103,7 @@ void oop_field_store(oop* field, oop new_value) {
 **增量更新**：当有新的引用插入时，记录下新的引用对象。
 
 ```c
-void post_write_barrier(oop* field, oop new_value) {  
+void post_write_barrier(oop* field, oop new_value) {
   if($gc_phase == GC_CONCURRENT_MARK && !isMarkd(field)) {
       remark_set.add(new_value); // 记录新引用的对象
   }
@@ -121,7 +121,7 @@ void pre_write_barrier(oop* field) {
 // 优化
 void pre_write_barrier(oop* field) {
   // 处于GC并发标记阶段 且 该对象没有被标记（访问）过
-  if($gc_phase == GC_CONCURRENT_MARK && !isMarkd(field)) { 
+  if($gc_phase == GC_CONCURRENT_MARK && !isMarkd(field)) {
       oop old_value = *field; // 获取旧值
       remark_set.add(old_value); // 记录  原来的引用对象
   }
@@ -249,5 +249,3 @@ TODO
 0.847: [CMS-concurrent-reset-start]
 0.849: [CMS-concurrent-reset: 0.001/0.001 secs] [Times: user=0.01 sys=0.00, real=0.00 secs]
 ```
-
-

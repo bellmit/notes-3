@@ -56,30 +56,30 @@ Write barrier就是当改写一个引用时：
 
 Java代码
 
-1. a.x = b 
+1. a.x = b
 
 
 插入一块额外的代码，变成：
 
 C代码
 
-1. write_barrier(a, &(a->x), b); 
-2. a->x = b; 
+1. write_barrier(a, &(a->x), b);
+2. a->x = b;
 
 
 Read barrier就是当读取一个引用时：
 
-Java代码 
+Java代码
 
-1. b = a.x 
+1. b = a.x
 
 
 插入一块额外的代码，变成：
 
 C代码
 
-1. read_barrier(&(a->x)); 
-2. b = a->x; 
+1. read_barrier(&(a->x));
+2. b = a->x;
 
 
 
