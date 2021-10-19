@@ -80,7 +80,7 @@ rollback segment 存在于 system tablespace、undo tablespaces 和 temporary ta
 
 最大值：2^64 - 1
 
-# 4、解释
+## 4、解释
 
 Undo log 可以理解为一个链表，由 DB_ROLL_PTR 连接起来，每执行一次插入或更新操作，就会在链表中增加一个节点，并且 purge 线程在分析到某个历史节点不再被使用时就会清除该节点（删除日志）。
 
