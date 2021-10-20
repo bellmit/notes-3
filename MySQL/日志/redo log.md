@@ -49,7 +49,7 @@ Last checkpoint at  433500788 -- 系统最后一次刷新buffer pool脏中页数
 
 # 三、checkpoint
 
-<img src="http://snail-resources.oss-cn-beijing.aliyuncs.com/1623842103.9139662p9C85jiZv1.png" alt="6F4285F2-F3A0-43B8-8BAC-D0ED89A96BA7" style="zoom: 30%;" />
+![CheckPoint](http://snail-resources.oss-cn-beijing.aliyuncs.com/1623842103.9139662p9C85jiZv1.png)
 
 - `write pos` 是当前记录的位置，一边写一边后移，写到第 3 号文件末尾后就回到 0 号文件开头。
 - `checkpoint` 是当前要擦除的位置，也是往后推移并且循环的，擦除记录前要把记录更新到数据文件。
