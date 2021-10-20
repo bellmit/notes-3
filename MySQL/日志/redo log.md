@@ -3,11 +3,11 @@
 - [二、LSN](#二lsn)
 - [三、checkpoint](#三checkpoint)
 - [四、配置参数](#四配置参数)
-    - [1、**<u>innodb_flush_log_at_trx_commit</u>**](#1uinnodb_flush_log_at_trx_commitu)
-    - [2、**<u>innodb_log_buffer_size</u>**](#2uinnodb_log_buffer_sizeu)
-    - [3、**<u>innodb_log_file_size</u>**](#3uinnodb_log_file_sizeu)
-    - [4、**<u>innodb_log_files_in_group</u>**](#4uinnodb_log_files_in_groupu)
-    - [5、**<u>innodb_log_group_home_dir</u>**](#5uinnodb_log_group_home_diru)
+    - [1、innodb_flush_log_at_trx_commit](#1innodb_flush_log_at_trx_commit)
+    - [2、innodb_log_buffer_size](#2innodb_log_buffer_size)
+    - [3、innodb_log_file_size](#3innodb_log_file_size)
+    - [4、innodb_log_files_in_group](#4innodb_log_files_in_group)
+    - [5、innodb_log_group_home_dir](#5innodb_log_group_home_dir)
 
 # 小酒馆的故事
 
@@ -57,7 +57,7 @@ Last checkpoint at  433500788 -- 系统最后一次刷新buffer pool脏中页数
 
 # 四、配置参数
 
-## 1、**<u>innodb_flush_log_at_trx_commit</u>**
+## 1、innodb_flush_log_at_trx_commit
 
 作用：控制 redo log 刷盘策略，将 redo log buffer 刷到 redo log file 中。
 
@@ -67,7 +67,7 @@ Last checkpoint at  433500788 -- 系统最后一次刷新buffer pool脏中页数
 
 ![47BBB576-3C28-44A7-B0B0-CCBB1E907393](http://snail-resources.oss-cn-beijing.aliyuncs.com/1623842179.9929678g8ewOM3175.png)
 
-## 2、**<u>innodb_log_buffer_size</u>**
+## 2、innodb_log_buffer_size
 
 缓冲的大小，配置的值越大，就可以避免大事务在事务提交前将日志写入磁盘。
 
@@ -75,7 +75,7 @@ Last checkpoint at  433500788 -- 系统最后一次刷新buffer pool脏中页数
 - 最小值：1048576（1M）
 - 最大值：4294967295（4G）
 
-## 3、**<u>innodb_log_file_size</u>**
+## 3、innodb_log_file_size
 
 控制每个 redo log 文件的大小。
 
@@ -85,7 +85,7 @@ Last checkpoint at  433500788 -- 系统最后一次刷新buffer pool脏中页数
 
 默认值可以设置为 1G。
 
-## 4、**<u>innodb_log_files_in_group</u>**
+## 4、innodb_log_files_in_group
 
 设置在一个组内可以有多少个重做日志文件。
 
@@ -95,6 +95,6 @@ Last checkpoint at  433500788 -- 系统最后一次刷新buffer pool脏中页数
 
 注意：innodb_log_file_size * innodb_log_files_in_group < 512G。
 
-## 5、**<u>innodb_log_group_home_dir</u>**
+## 5、innodb_log_group_home_dir
 
 设置 redo log file 的目录。默认在 datadir 目录下。
