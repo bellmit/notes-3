@@ -39,10 +39,10 @@ LSN（log sequence number）：日志序列号，是一个一直递增的整形�
 ---
 LOG
 ---
-Log sequence number 433500797 # 当前系统最大的LSN
-Log flushed up to   433500797 # 当前已经写入redo日志文件的 LSN
-Pages flushed up to 433500797 # 已经将更改写入脏页的LSN号
-Last checkpoint at  433500788 # 系统最后一次刷新buffer pool脏中页数据到磁盘的checkpoint
+Log sequence number 433500797 -- 当前系统最大的LSN
+Log flushed up to   433500797 -- 当前已经写入redo日志文件的 LSN
+Pages flushed up to 433500797 -- 已经将更改写入脏页的LSN号
+Last checkpoint at  433500788 -- 系统最后一次刷新buffer pool脏中页数据到磁盘的checkpoint
 0 pending log flushes, 0 pending chkp writes
 289 log i/o's done, 0.00 log i/o's/second
 ```
