@@ -1,37 +1,49 @@
 ## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/wu0916/notes/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+这是我个人日常整理的笔记，希望能形成一套体系。👊
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## 一、Java
+### 1、基础知识
+### 2、集合框架
+### 3、并发与多线程
+### 4、网络编程
+### 5、JVM系列
 
-### Markdown
+## 二、设计模式
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## 三、算法
 
-```markdown
-Syntax highlighted code block
+## 四、MySQL
 
-# Header 1
-## Header 2
-### Header 3
+## 五、Redis
 
-- Bulleted
-- List
+## 六、消息队列
 
-1. Numbered
-2. List
+## 八、微服务
+### 1、注册中心
+### 2、服务发现
+### 3、远程调用
 
-**Bold** and _Italic_ and `Code` text
+## 安全系列
+### 1、SpringSecurity
+### 2、Sa-Token
 
-[Link](url) and ![Image](src)
-```
+## 构建框架
+### 1、Maven
+### 2、Gradle
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+## 框架体系
+### 1、SpringFramework
+### 2、SpringBoot
+### 3、MyBatis
+### 4、XXL-JOB
+### 5、Squirrel
 
-### Jekyll Themes
+## 好用的工具包
+### 1、Hutool
+### 2、Guava
+### 3、HttpClient
+### 4、CaffeineCache
+### 5、Jackson & Gson
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/wu0916/notes/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## Linux
