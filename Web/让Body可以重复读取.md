@@ -113,4 +113,4 @@ public class RequestBodyRepeatableReadWrapper extends HttpServletRequestWrapper 
 }
 ```
 
-**注意**：这种方式仅适用于使用 `StandardServletMultipartResolver` 进行文件上传解析。
+**注意**：这种方式仅适用于使用 `StandardServletMultipartResolver` 进行文件的解析，不适用于使用 commons-fileupload 包进行文件的解析。

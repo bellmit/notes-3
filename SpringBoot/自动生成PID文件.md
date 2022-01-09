@@ -1,6 +1,8 @@
 # SpringBoot 自动生成 PID 文件
 
-并不是在 application.yml 文件中配置了 `spring.pid.file=/Users/wu/web01.pid` 就可以了，**还得将监听器给加入进来**。
+并不是在 application.yml 文件中配置了 `spring.pid.file=/Users/wu/web01.pid` 就可以了。
+
+**还得将监听器加上**。
 
 ```java
 import org.springframework.boot.SpringApplication;

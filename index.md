@@ -18,6 +18,8 @@
 ## 三、算法
 
 ## 四、MySQL
+### 系列
+1. [体系结构](./MySQL/系列/1、体系结构.md)
 
 ## 五、Redis
 
@@ -43,8 +45,7 @@
 1. [Gradle入门](./构建工具/Gradle入门.md)
 
 ## 配置文件
-### 1、vim配置
-1. [vimrc](./配置文件/vimrc.md)
+### 1、vim配置 [vimrc](./配置文件/vimrc.md)
 
 ## 框架体系
 ### 1、SpringFramework
