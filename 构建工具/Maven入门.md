@@ -190,9 +190,7 @@ Maven 会自动根据包的名字是否带有 SNAPSHOT 来区分发布到哪个�
 
 # 五、命令
 
-如果是 SpringBoot 项目，会自动给你生成 maven 的 jar 和命令，如图：
-
-![](https://secure1.wostatic.cn/static/mXbrP7cgDG1KfWF3Ymhg6x/image.png)
+如果是 SpringBoot 项目，会自动给你生成 maven 的 jar 和命令。
 
 此时，你的机器不需要安装 maven，直接使用 mvnw 这个脚本即可运行，比如 `./mvnw clean compile install deploy`。
 
